@@ -34,3 +34,10 @@ module.exports = (robot) ->
   robot.hear /quer tc/i, (res) ->
     res.send "tc o carai"
   #END OF AUTOMATIC RESPONSES
+
+  #DIRECT RESPONSES
+  robot.respond /vamo mostrar cultura pra esse povo/i, (res) ->
+    res.send "é pra mandar os falsete?"
+  robot.respond /pode mandar/i, (res) ->
+    res.send "aaah aaaaAAAh AAAAH AAAAAHHH"
+  #END OF DIRECT RESPONDES

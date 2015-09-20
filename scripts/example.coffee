@@ -7,13 +7,13 @@ module.exports = (robot) ->
     res.send "Use o comando: coutobot set boa <a boa>"
 
   robot.respond /set boa (.*)/i, (res) ->
-    almocoType = res.match[1]
-    robot.brain.set 'almocoGlobal', almocoType
+    boaEnter = res.match[1]
+    robot.brain.set 'boa', boaEnter
 
-    res.reply "A boa foi setada para: #{almocoType}"
+    res.reply "A boa foi setada para: #{boaEnter}"
 
-  robot.hear /qual a boa/i, (res, almocoType) ->
-    local = robot.brain.get('almocoGlobal')
+  robot.hear /qual a boa/i, (res) ->
+    local = robot.brain.get('boa')
     if local == null
       res.send "Tem boa não. Use: coutobot boa help"
     else

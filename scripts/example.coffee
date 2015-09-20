@@ -7,17 +7,15 @@ module.exports = (robot) ->
     res.send "Use o comando: coutobot set boa <a boa>"
 
   robot.respond /set boa (.*)/i, (res) ->
-    boaEnter = res.match[1]
-    robot.brain.set 'boa', boaEnter
+    robot.brain.set 'boa', res.match[1]
 
     res.reply "A boa foi setada para: #{boaEnter}"
 
   robot.hear /qual a boa/i, (res) ->
-    local = robot.brain.get('boa')
-    if local == null
+    if robot.brain.get('boa') == null
       res.send "Tem boa não. Use: coutobot boa help"
     else
-      res.send "A boa é #{local}"
+      res.send "A boa é #{robot.brain.get('boa')}"
   #END OF: QUAL A BOA
 
   #AUTOMATIC RESPONSES

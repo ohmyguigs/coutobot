@@ -7,7 +7,8 @@ module.exports = (robot) ->
     res.send "Use o comando: coutobot set boa <a boa>"
 
   robot.respond /set boa (.*)/i, (res) ->
-    robot.brain.set 'boa', res.match[1]
+    boaEnter = res.match[1]
+    robot.brain.set 'boa', boaEnter
 
     res.reply "A boa foi setada para: #{boaEnter}"
 

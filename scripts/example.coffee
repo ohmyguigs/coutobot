@@ -34,7 +34,7 @@ module.exports = (robot) ->
     res.send "tc o carai"
 
   robot.hear /yomama/i, (res) ->
-    res.send "Ooooooh"
+    res.send "Ooooooh snap!"
   #END OF AUTOMATIC RESPONSES
 
   #DIRECT RESPONSES

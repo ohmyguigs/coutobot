@@ -6,6 +6,7 @@
   "description": "Couto's Family robot integrant",
   "dependencies": {
     "hubot": "^2.16.0",
+    "hubot-9gag": "^0.2.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.2.1",
     "hubot-google-translate": "^0.2.0",

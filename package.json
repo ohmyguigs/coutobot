@@ -5,6 +5,7 @@
   "author": "resendefreitas <guilherme@candle.life>",
   "description": "Couto's Family robot integrant",
   "dependencies": {
+    "cheerio": "^0.19.0",
     "hubot": "^2.16.0",
     "hubot-9gag": "^0.2.0",
     "hubot-diagnostics": "0.0.1",
@@ -18,7 +19,8 @@
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.16.2",
     "hubot-shipit": "^0.2.0",
-    "hubot-telegram": "0.0.8"
+    "hubot-telegram": "0.0.8",
+    "request": "^2.64.0"
   },
   "engines": {
     "node": "0.10.x"

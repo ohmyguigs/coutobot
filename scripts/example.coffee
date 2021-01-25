@@ -2,6 +2,10 @@
 #   https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+  # DEBUG
+  # robot.respond /(.+)/i, (res) ->
+  #   console.log res.message
+  #   console.log res.envelope
 
   #QUAL A BOA function conde
   robot.respond /boa help/i, (res) ->
@@ -46,6 +50,22 @@ module.exports = (robot) ->
 
   robot.hear /quer tc/i, (res) ->
     res.send "tc o carai"
+
+  timbus = [
+    'CAACAgEAAxkBAAEBz8lgDi2vnYj0zdVUj0NKaS9vuH99YwACzQEAAlRD1AaJDFD4pKsCvB4E',
+    'CAACAgEAAxkBAAEBz8tgDi4TpgmDER7QIYRaoKdD0N_sPQACCgADUimIOFtxb1-RzG2QHgQ',
+    'CAACAgEAAxkBAAEBz81gDi4mgYVYp6wkVejpqz-jqL-C7AACBgADUimIOM_RTP5jgl3oHgQ',
+    'CAACAgEAAxkBAAEBz89gDi4uwd9_QJWMFN_fvDXt-p6IzwACCAADUimIOF0ctd9hlYqYHgQ',
+    'CAACAgEAAxkBAAEBz9FgDi5bCx1LeHpSF6CwcBpFUfNnXAAC3wEAAlRD1AYUdPEH2OHYrx4E',
+  ]
+  robot.hear /manda um (timbú|gambá|timbu|gamba|sarui|saruí)/g, (res) ->
+    console.log res
+    robot.emit 'telegram:invoke',
+    'sendSticker',
+    { chat_id: res.envelope.room, sticker: res.random timbus },
+    (error, response) ->
+      console.log error
+      console.log response
   #END OF AUTOMATIC RESPONSES
 
   #DIRECT RESPONSES

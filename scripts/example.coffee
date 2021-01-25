@@ -1,4 +1,5 @@
-#   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
+#   These are from the scripting documentation:
+#   https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
 
@@ -29,6 +30,19 @@ module.exports = (robot) ->
   lulz = ['lol', 'lel', 'lel', 'kek', 'kek', 'lel', 'kek', 'LAWL']
   robot.hear /kek/i, (res) ->
     res.send res.random lulz
+
+  sibs = [
+    'sibeck',
+    'sipinélius',
+    'sibnélios',
+    'sipélis',
+    'sibolino',
+    'sebólius',
+    'silésbico',
+    'silésbios',
+  ]
+  robot.hear /sibelius/i, (res) ->
+    res.send res.random sibs
 
   robot.hear /quer tc/i, (res) ->
     res.send "tc o carai"

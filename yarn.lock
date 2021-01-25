@@ -418,6 +418,11 @@ hubot-cleverbot@^2.0.0:
     cleverbot-node "~0.3"
     coffee-script "~1.6"
 
+hubot-diagnostics@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hubot-diagnostics/-/hubot-diagnostics-1.0.0.tgz#3a20de525901b83924b523b1244dcb726a8def69"
+  integrity sha512-4kuR04lULoDDra/Z7B/rgMQMZW531Ve5hwhd8xNOKAl8e1cb5bZNqVpGFYF174eYcN54+RZuWQFHsntjvczyag==
+
 hubot-help@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hubot-help/-/hubot-help-1.0.1.tgz#0a678e551d67c4317e222ff294b9583b8322fce7"

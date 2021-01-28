@@ -25,8 +25,11 @@ module.exports = robot => {
       removido = lista.splice(q+1, 1)
       robot.brain.set('sorteio', lista)
     }
-
-    res.send(`tirei o ${removido}... a lista ta assim:\n ${lista}`)
+    msg = ""
+    lista.forEach((item, index) => {
+      msg += `${index+1}. ${item}\n`
+    })
+    res.send(`vc pediu pra tirar o ${q}\ntirei o ${removido}.../na lista ta assim:\n ${msg}`)
   })
 
   robot.hear(/lista do sorteio/i, (res) => {

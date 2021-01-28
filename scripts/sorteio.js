@@ -32,7 +32,7 @@ module.exports = robot => {
     res.send(`vc pediu pra tirar o ${q}\ntirei o ${removido}...\na lista ta assim:\n ${msg}`)
   })
 
-  robot.hear(/lista do sorteio/i, (res) => {
+  robot.hear(/(lista do sorteio|como (ta|está|esta) o sorteio)/i, (res) => {
     const  sorteio = robot.brain.get('sorteio')
     if (sorteio == null) {
       res.send("Não lembro de nenhum sorteio.\nUse: coutobot vamos fazer um sorteio")
@@ -45,7 +45,7 @@ module.exports = robot => {
     }
   })
 
-  robot.hear(/sorteia/i, (res) => {
+  robot.hear(/(sorteia|sorteie)/i, (res) => {
     const sorteio = robot.brain.get('sorteio')
     if (sorteio == null) {
       res.send("Não lembro de nenhum sorteio.\nUse: coutobot vamos fazer um sorteio")

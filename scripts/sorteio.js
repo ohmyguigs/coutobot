@@ -54,7 +54,7 @@ module.exports = robot => {
     }
   })
 
-  robot.respond(/zera o sorteio/i, (res) => {
+  robot.respond(/(zera o sorteio|novo sorteio)/i, (res) => {
     robot.brain.set('sorteio', null)
     res.send(`ta zero bala, pode fazer outro sorteio...`)
   })

@@ -22,14 +22,14 @@ module.exports = robot => {
       res.reply("manda um numero pra tirar carai")
       return
     } else {
-      lista = lista.splice(q+1, 1)
+      removido = lista.splice(q+1, 1)
       robot.brain.set('sorteio', lista)
     }
 
-    res.send(`tirei o ${q}... a lista ta assim:\n ${lista}`)
+    res.send(`tirei o ${removido}... a lista ta assim:\n ${lista}`)
   })
 
-  robot.hear(/como ta o sorteio/i, (res) => {
+  robot.hear(/lista do sorteio/i, (res) => {
     const  sorteio = robot.brain.get('sorteio')
     if (sorteio == null) {
       res.send("Não lembro de nenhum sorteio.\nUse: coutobot vamos fazer um sorteio")

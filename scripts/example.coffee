@@ -70,6 +70,18 @@ module.exports = (robot) ->
   ]
   robot.hear /sibelius/i, (res) ->
     res.send res.random sibs
+  
+  duds = [
+    'linda',
+    'duds',
+    'fuda',
+    'duvda',
+    'buda',
+    'um anju',
+    'duda rainha, resto nadinha',
+  ]
+  robot.hear /duda/i, (res) ->
+    res.send res.random duds
 
   robot.hear /quer tc/i, (res) ->
     res.send "tc o carai"

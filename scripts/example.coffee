@@ -7,24 +7,31 @@ module.exports = (robot) ->
   #   console.log res.message
   #   console.log res.envelope
 
-  #QUAL A BOA function conde
-  robot.respond /boa help/i, (res) ->
-    res.send "Use o comando: coutobot set boa <a boa>"
+  # SORTEIOS
+  robot.respond /vamos fazer um sorteio/i, (res) ->
+    res.send "Use o comando: coutobot bota <alguma coisa>\npara adicionar <alguma coisa> a lista"
 
-  robot.respond /set boa (.*)/i, (res) ->
-    boaEnter = res.match[1]
-    robot.brain.set 'boa', boaEnter
+  robot.respond /bota (.*)/i, (res) ->
+    algumaCoisa = res.match[1]
+    lista = robot.brain.get('sorteio') || []
+    robot.brain.set 'sorteio', [...lista, algumaCoisa]
 
-    res.reply "A boa foi setada para: #{boaEnter}"
+    res.reply "Adicionei: #{algumaCoisa} na lista do sorteio"
 
-  robot.hear /qual a boa/i, (res) ->
-    if robot.brain.get('boa') == null
-      res.send "Tem boa não. Use: coutobot boa help"
+  robot.hear /como ta o sorteio/i, (res) ->
+    if robot.brain.get('sorteio') == null
+      res.send "Não lembro de nenhum sorteio.\nUse: coutobot vamos fazer um sorteio"
     else
-      res.send "A boa é #{robot.brain.get('boa')}"
-  #END OF: QUAL A BOA
+      msg = ""
+      lista = robot.brain.get('sorteio')
+      listaFormatada = lista.forEach(
+        (item, index) ->
+          msg += "#{index+1}. #{item}\n"
+      )
+      res.send "A lista ta assim:\n #{msg}"
+  # END OF: SORTEIOS
 
-  #AUTOMATIC RESPONSES
+  # AUTOMATIC RESPONSES
   robot.hear /vacilao/i, (res) ->
     res.send "vasilao morre cedo"
 
@@ -70,7 +77,7 @@ module.exports = (robot) ->
   ]
   robot.hear /sibelius/i, (res) ->
     res.send res.random sibs
-  
+
   duds = [
     'linda',
     'duds',
@@ -94,7 +101,6 @@ module.exports = (robot) ->
     'CAACAgEAAxkBAAEBz9FgDi5bCx1LeHpSF6CwcBpFUfNnXAAC3wEAAlRD1AYUdPEH2OHYrx4E',
   ]
   robot.hear /manda um (timbú|gambá|timbu|gamba|sarui|saruí)/g, (res) ->
-    console.log res
     robot.emit 'telegram:invoke',
     'sendSticker',
     { chat_id: res.envelope.room, sticker: res.random timbus },

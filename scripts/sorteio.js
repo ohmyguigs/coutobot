@@ -50,4 +50,9 @@ module.exports = robot => {
       res.send(`Sorteio deu: ${res.random(sorteio)}`)
     }
   })
+
+  robot.respond(/zera o sorteio/i, (res) => {
+    robot.brain.set('sorteio', null)
+    res.send(`ta zero bala, pode fazer outro sorteio...`)
+  })
 }

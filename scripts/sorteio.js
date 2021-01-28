@@ -12,14 +12,24 @@ module.exports = robot => {
   })
 
   robot.hear(/como ta o sorteio/i, (res) => {
-    if (robot.brain.get('sorteio') == null) {
+    const  sorteio = robot.brain.get('sorteio')
+    if (sorteio == null) {
       res.send("Não lembro de nenhum sorteio.\nUse: coutobot vamos fazer um sorteio")
     } else {
       msg = ""
-      robot.brain.get('sorteio').forEach((item, index) => {
+      sorteio.forEach((item, index) => {
         msg += `${index+1}. ${item}\n`
       })
       res.send(`A lista ta assim:\n ${msg}`)
+    }
+  })
+
+  robot.hear(/sorteia/i, (res) => {
+    const sorteio = robot.brain.get('sorteio')
+    if (sorteio == null) {
+      res.send("Não lembro de nenhum sorteio.\nUse: coutobot vamos fazer um sorteio")
+    } else {
+      res.send(`Sorteio deu: ${res.random(sorteio)}`)
     }
   })
 }

@@ -29,7 +29,7 @@ module.exports = robot => {
     lista.forEach((item, index) => {
       msg += `${index+1}. ${item}\n`
     })
-    res.send(`vc pediu pra tirar o ${q}\ntirei o ${removido}.../na lista ta assim:\n ${msg}`)
+    res.send(`vc pediu pra tirar o ${q}\ntirei o ${removido}...\na lista ta assim:\n ${msg}`)
   })
 
   robot.hear(/lista do sorteio/i, (res) => {

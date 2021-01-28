@@ -22,7 +22,7 @@ module.exports = robot => {
       res.reply("manda um numero pra tirar carai")
       return
     } else {
-      lista = lista.splice(q, 1)
+      lista = lista.splice(q+1, 1)
       robot.brain.set('sorteio', lista)
     }
 

@@ -5,10 +5,28 @@ module.exports = robot => {
 
   robot.respond(/bota (.*)/i, (res) => {
     algumaCoisa = res.match[1]
-    lista = robot.brain.get('sorteio') || []
+    const lista = robot.brain.get('sorteio') || []
     robot.brain.set('sorteio', [...lista, algumaCoisa])
 
     res.reply(`Adicionei: ${algumaCoisa} na lista do sorteio`)
+  })
+
+  robot.respond(/tira o (.*)/i, (res) => {
+    let q = res.match[1]
+    try {
+      q = parseInt(q)
+    } catch (e) {}
+
+    lista = robot.brain.get('sorteio') || []
+    if (isNaN(q)) {
+      res.reply("manda um numero pra tirar carai")
+      return
+    } else {
+      lista = lista.splice(q, 1)
+      robot.brain.set('sorteio', lista)
+    }
+
+    res.send(`tirei o ${q}... a lista ta assim:\n ${lista}`)
   })
 
   robot.hear(/como ta o sorteio/i, (res) => {

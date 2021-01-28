@@ -8,7 +8,7 @@ module.exports = robot => {
     lista = robot.brain.get('sorteio') || []
     robot.brain.set('sorteio', [...lista, algumaCoisa])
 
-    res.reply("Adicionei: #{algumaCoisa} na lista do sorteio")
+    res.reply(`Adicionei: ${algumaCoisa} na lista do sorteio`)
   })
 
   robot.hear(/como ta o sorteio/i, (res) => {
@@ -17,9 +17,9 @@ module.exports = robot => {
     } else {
       msg = ""
       robot.brain.get('sorteio').forEach((item, index) => {
-        msg += "#{index+1}. #{item}\n"
+        msg += `${index+1}. ${item}\n`
       })
-      res.send("A lista ta assim:\n #{msg}")
+      res.send(`A lista ta assim:\n ${msg}`)
     }
   })
 }

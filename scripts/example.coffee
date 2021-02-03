@@ -18,6 +18,9 @@ module.exports = (robot) ->
   robot.hear /kek/i, (res) ->
     res.send res.random lulz
 
+  robot.hear /edson/i, (res) ->
+    res.send "sibelius?"
+
   sibs = [
     'sibeck',
     'sipinélius',
@@ -34,11 +37,8 @@ module.exports = (robot) ->
     'sinéblios',
     'sisi',
     'sibelitos',
-    'silibis',
     'silibius',
-    'sibelibelius',
-    'seneblio',
-    'seneblios',
+    'sinéblios',
     'sibelinho lindo',
     'sibelindo',
     'sibelícia',
@@ -50,6 +50,7 @@ module.exports = (robot) ->
     'silibidos',
     'sinésio',
     'silibelius',
+    'Edson?'
   ]
   robot.hear /sibelius/i, (res) ->
     res.send res.random sibs
@@ -80,6 +81,23 @@ module.exports = (robot) ->
     robot.emit 'telegram:invoke',
     'sendSticker',
     { chat_id: res.envelope.room, sticker: res.random timbus },
+    (error, response) ->
+      console.log error
+      console.log response
+      
+  poses = [
+    'CAACAgEAAxkBAAEB1tFgGqaPHol8zytD53sNr5d88CiS1AACHAADhfshGyuC_z68OoyeHgQ',
+    'CAACAgEAAxkBAAEB1tNgGqamL8_0oEFQPYXVlroyOEh2bAACFQADhfshG6sWZBSTGousHgQ',
+    'CAACAgEAAxkBAAEB1tVgGqaomgZirkGnKa5lOXxC-BpIxQACFgADhfshG-Q_wUaY9mlIHgQ',
+    'CAACAgQAAxkBAAEB1t1gGqcDx4kB_mSpwBExF_e7s_OzwQAC2gAD-7JCAvpTlt6vVWB8HgQ',
+    'CAACAgQAAxkBAAEB1tdgGqbgCdJtQ1eqxH5Y3qc-wjmLAQACJAAD-7JCAu5QYjyPRmx9HgQ',
+    'CAACAgQAAxkBAAEB1tlgGqbk_7156wKe6ewbGXcmdh3qeQACDQAD-7JCAlTfJ-IrQokEHgQ',
+    'CAACAgQAAxkBAAEB1ttgGqb5_pG5Gh4jfS87nlA1YGtGsAACiAAD-7JCAgIqRJojVfk8HgQ',
+  ]
+  robot.hear /(jojo|pose|dio|za warudo|the world)/g, (res) ->
+    robot.emit 'telegram:invoke',
+    'sendSticker',
+    { chat_id: res.envelope.room, sticker: res.random poses },
     (error, response) ->
       console.log error
       console.log response

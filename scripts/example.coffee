@@ -94,7 +94,7 @@ module.exports = (robot) ->
     'CAACAgQAAxkBAAEB1tlgGqbk_7156wKe6ewbGXcmdh3qeQACDQAD-7JCAlTfJ-IrQokEHgQ',
     'CAACAgQAAxkBAAEB1ttgGqb5_pG5Gh4jfS87nlA1YGtGsAACiAAD-7JCAgIqRJojVfk8HgQ',
   ]
-  robot.hear /(jojo|pose|dio|za warudo|the world)/g, (res) ->
+  robot.hear /(jojo|jojo pose|za warudo|the world)/g, (res) ->
     robot.emit 'telegram:invoke',
     'sendSticker',
     { chat_id: res.envelope.room, sticker: res.random poses },
